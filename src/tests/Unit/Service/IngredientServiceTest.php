@@ -74,9 +74,9 @@ class IngredientServiceTest extends TestCase
         );
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'notificationSent' => 0, 'ingredientName'=> 'Beef', 'startQuantity' => 2, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1500],
-            (object)['ingredientId' => 2, 'notificationSent' => 0, 'ingredientName'=> 'Cheese', 'startQuantity' => 5, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'notificationSent' => 0, 'ingredientName'=> 'Onion', 'startQuantity' => 10, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'notificationSent' => 0, 'ingredientName'=> 'Beef', 'startQuantity' => 2, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1500],
+            ['ingredientId' => 2, 'notificationSent' => 0, 'ingredientName'=> 'Cheese', 'startQuantity' => 5, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'notificationSent' => 0, 'ingredientName'=> 'Onion', 'startQuantity' => 10, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
         ];
 
         $expected = [
@@ -96,9 +96,9 @@ class IngredientServiceTest extends TestCase
         );
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'notificationSent' => 1, 'ingredientName'=> 'Beef', 'startQuantity' => 2, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1500],
-            (object)['ingredientId' => 2, 'notificationSent' => 0, 'ingredientName'=> 'Cheese', 'startQuantity' => 5, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'notificationSent' => 0, 'ingredientName'=> 'Onion', 'startQuantity' => 10, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'notificationSent' => 1, 'ingredientName'=> 'Beef', 'startQuantity' => 2, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1500],
+            ['ingredientId' => 2, 'notificationSent' => 0, 'ingredientName'=> 'Cheese', 'startQuantity' => 5, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'notificationSent' => 0, 'ingredientName'=> 'Onion', 'startQuantity' => 10, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
         ];
 
         $expected = [];

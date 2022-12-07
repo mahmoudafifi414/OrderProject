@@ -19,8 +19,8 @@ class IngredientRepositoryTest extends TestCase
         $ingredientRepository = new IngredientRepository();
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            (object)['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            ['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
         ];
         $ingredientRepository->updateOneOrMoreIngredient($productIngredients);
 

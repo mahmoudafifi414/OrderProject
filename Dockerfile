@@ -13,13 +13,19 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xd
 RUN echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.mode=develop,debug,coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-
-
 RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www
 
 ADD . /var/www
+
+COPY /src/composer.json /src/composer.lock ./
+
+#RUN composer install --no-scripts --no-autoloader --prefer-dist
 
 RUN ["chmod", "+x", "./entrypoint.sh"]
 

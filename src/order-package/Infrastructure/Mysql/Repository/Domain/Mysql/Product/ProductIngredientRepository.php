@@ -2,8 +2,8 @@
 
 namespace Package\Infrastructure\Mysql\Repository\Domain\Mysql\Product;
 
-use Illuminate\Support\Facades\DB;
 use Package\Domain\Model\Product\IProductIngredientRepository;
+use Package\Infrastructure\Mysql\Model\Eloquent\ProductIngredient;
 
 class ProductIngredientRepository implements IProductIngredientRepository
 {
@@ -13,8 +13,7 @@ class ProductIngredientRepository implements IProductIngredientRepository
      */
     public function getProductsIngredients(array $productIds): array
     {
-        return DB::table('product_ingredient')
-                ->join('ingredients','product_ingredient.ingredient_id','ingredients.id')
+        return ProductIngredient::join('ingredients','product_ingredient.ingredient_id','ingredients.id')
                 ->whereIn('product_ingredient.product_id', $productIds)
                 ->select([
                     'product_id AS productId',

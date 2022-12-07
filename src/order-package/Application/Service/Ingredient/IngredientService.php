@@ -41,9 +41,9 @@ class IngredientService
     {
         $ingredientsBelowHalfQuantity = [];
         foreach ($productsIngredients as $productIngredient){
-            $newInStockQuantityValue = $productIngredient->inStockQuantity - ($productIngredient->unit == 'kg' ? $productIngredient->productIngredientQuantity / 1000 : $productIngredient->productIngredientQuantity);
-            if (!$productIngredient->notificationSent && ($newInStockQuantityValue < ($productIngredient->startQuantity / 2))){
-                $ingredientsBelowHalfQuantity[$productIngredient->ingredientId] = $productIngredient->ingredientName;
+            $newInStockQuantityValue = $productIngredient['inStockQuantity'] - ($productIngredient['unit'] == 'kg' ? $productIngredient['productIngredientQuantity'] / 1000 : $productIngredient['productIngredientQuantity']);
+            if (!$productIngredient['notificationSent'] && ($newInStockQuantityValue < ($productIngredient['startQuantity'] / 2))){
+                $ingredientsBelowHalfQuantity[$productIngredient['ingredientId']] = $productIngredient['ingredientName'];
             }
         }
 

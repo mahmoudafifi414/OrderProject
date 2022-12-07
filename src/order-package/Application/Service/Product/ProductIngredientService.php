@@ -41,8 +41,8 @@ class ProductIngredientService
     public function isAnyIngredientOutOfStock(array $productsIngredients): bool
     {
         foreach ($productsIngredients as $productIngredient){
-            $ingredientQuantity = $productIngredient->unit == 'kg' ? $productIngredient->inStockQuantity * 1000 : $productIngredient->inStockQuantity;
-            if ($productIngredient->productIngredientQuantity > $ingredientQuantity){
+            $ingredientQuantity = $productIngredient['unit'] == 'kg' ? $productIngredient['inStockQuantity'] * 1000 : $productIngredient['inStockQuantity'];
+            if ($productIngredient['productIngredientQuantity'] > $ingredientQuantity){
                 return true;
             }
         }
@@ -60,15 +60,15 @@ class ProductIngredientService
     {
         $productsIngredientsGroupedQuantity = [];
         foreach ($productsIngredients as $productIngredient){
-            $productIngredient->productIngredientQuantity = $productIngredient->productIngredientQuantity * $productIdsAndQuantities[$productIngredient->productId]['quantity'];
+            $productIngredient['productIngredientQuantity'] = $productIngredient['productIngredientQuantity'] * $productIdsAndQuantities[$productIngredient['productId']]['quantity'];
             // if the ingredient is has another record with another product ,so sum all of its required quantity and put it in one array index.
-            if (key_exists($productIngredient->ingredientId, $productsIngredientsGroupedQuantity)){
-                $productsIngredientsGroupedQuantity[$productIngredient->ingredientId]->productIngredientQuantity =
-                    $productsIngredientsGroupedQuantity[$productIngredient->ingredientId]->productIngredientQuantity + $productIngredient->productIngredientQuantity;
+            if (key_exists($productIngredient['ingredientId'], $productsIngredientsGroupedQuantity)){
+                $productsIngredientsGroupedQuantity[$productIngredient['ingredientId']]['productIngredientQuantity'] =
+                    $productsIngredientsGroupedQuantity[$productIngredient['ingredientId']]['productIngredientQuantity'] + $productIngredient['productIngredientQuantity'];
                 continue;
             }
-            unset($productIngredient->productId);
-            $productsIngredientsGroupedQuantity[$productIngredient->ingredientId] = $productIngredient;
+            unset($productIngredient['productId']);
+            $productsIngredientsGroupedQuantity[$productIngredient['ingredientId']] = $productIngredient;
         }
 
         return $productsIngredientsGroupedQuantity;

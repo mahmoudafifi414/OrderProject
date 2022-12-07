@@ -22,10 +22,10 @@ class ProductIngredientServiceTest extends TestCase
         );
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            (object)['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
-            (object)['ingredientId' => 1, 'productId'=> 2, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            ['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'productId'=> 2, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 500],
         ];
 
         $productIdsAndQuantities= collect([
@@ -40,9 +40,9 @@ class ProductIngredientServiceTest extends TestCase
         ]);
 
         $expected = [
-          1 => (object)['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 3000],
-          2 => (object)['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-          3 => (object)['ingredientId' => 3, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 1200],
+          1 => ['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 3000],
+          2 => ['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+          3 => ['ingredientId' => 3, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 1200],
         ];
 
         $reflectionClass = new \ReflectionClass($productIngredientService);
@@ -65,9 +65,9 @@ class ProductIngredientServiceTest extends TestCase
         );
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            (object)['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            ['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
         ];
 
         $productIdsAndQuantities= collect([
@@ -82,9 +82,9 @@ class ProductIngredientServiceTest extends TestCase
         ]);
 
         $expected = [
-            1 => (object)['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 2000],
-            2 => (object)['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            3 => (object)['ingredientId' => 3, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 1200],
+            1 => ['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 2000],
+            2 => ['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            3 => ['ingredientId' => 3, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 1200],
         ];
 
         $reflectionClass = new \ReflectionClass($productIngredientService);
@@ -104,9 +104,9 @@ class ProductIngredientServiceTest extends TestCase
         );
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            (object)['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            ['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
         ];
 
         $result = $productIngredientService->isAnyIngredientOutOfStock($productIngredients);
@@ -124,9 +124,9 @@ class ProductIngredientServiceTest extends TestCase
         );
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 0.5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            (object)['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 0.5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            ['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
         ];
 
         $result = $productIngredientService->isAnyIngredientOutOfStock($productIngredients);
@@ -151,9 +151,9 @@ class ProductIngredientServiceTest extends TestCase
         ]);
 
         $productIngredients = [
-            (object)['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            (object)['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
-            (object)['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
+            ['ingredientId' => 1, 'productId'=> 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            ['ingredientId' => 2, 'productId'=> 1, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 500],
+            ['ingredientId' => 3, 'productId'=> 1, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 600],
         ];
         $productIngredientRepository = $this->getMockBuilder(ProductIngredientRepository::class)
                                             ->onlyMethods(['getProductsIngredients'])
@@ -163,9 +163,9 @@ class ProductIngredientServiceTest extends TestCase
         $productIngredientRepository->method('getProductsIngredients')->willReturn($productIngredients);
 
         $expected = [
-            1 => (object)['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 2000],
-            2 => (object)['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
-            3 => (object)['ingredientId' => 3, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 1200],
+            1 => ['ingredientId' => 1, 'inStockQuantity' => 2, 'unit' => 'kg', 'productIngredientQuantity' => 2000],
+            2 => ['ingredientId' => 2, 'inStockQuantity' => 5, 'unit' => 'kg', 'productIngredientQuantity' => 1000],
+            3 => ['ingredientId' => 3, 'inStockQuantity' => 10, 'unit' => 'kg', 'productIngredientQuantity' => 1200],
         ];
 
         $productIngredientService = new ProductIngredientService(

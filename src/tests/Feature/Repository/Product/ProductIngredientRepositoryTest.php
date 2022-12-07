@@ -17,7 +17,7 @@ class ProductIngredientRepositoryTest extends TestCase
         $productIngredientRepository = new ProductIngredientRepository();
         $result = $productIngredientRepository->getProductsIngredients([1,2]);
         $expected =
-            (object)[
+                 [
                     'productId' => 1,
                     'productIngredientQuantity' => 150.0,
                     'ingredientId' => 1,

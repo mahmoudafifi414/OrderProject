@@ -36,9 +36,9 @@ class IngredientRepository implements IIngredientRepository
         $ingredientIds = [];
         $cases = '';
         foreach ($productIngredients as $productIngredient) {
-            $ingredientIds[] = $productIngredient->ingredientId;
-            $newInStockQuantityValue = $productIngredient->inStockQuantity - ($productIngredient->unit == 'kg' ? $productIngredient->productIngredientQuantity / 1000 : $productIngredient->productIngredientQuantity);
-            $cases .= sprintf(' WHEN id = %d THEN %.2f ', $productIngredient->ingredientId, $newInStockQuantityValue);
+            $ingredientIds[] = $productIngredient['ingredientId'];
+            $newInStockQuantityValue = $productIngredient['inStockQuantity'] - ($productIngredient['unit'] == 'kg' ? $productIngredient['productIngredientQuantity'] / 1000 : $productIngredient['productIngredientQuantity']);
+            $cases .= sprintf(' WHEN id = %d THEN %.2f ', $productIngredient['ingredientId'], $newInStockQuantityValue);
         }
         $caseQuery = sprintf("CASE %s END", $cases);
 

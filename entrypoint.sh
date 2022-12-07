@@ -3,7 +3,6 @@
 cd /var/www
 php artisan key:generate
 chmod -R 777 storage/
-#composer install && composer dump-autoload
 php artisan cache:clear
 php artisan migrate:fresh
 php artisan db:seed

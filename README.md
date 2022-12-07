@@ -10,6 +10,8 @@ ______________________________________________________________
 3- run "docker-compose up -d --build" and this will init the project
 
 4- The entrypoint.sh is having some command mandatory to run the code ,and also it is pointed as entrypoint from Dockerfile.
+
+5 The most important step is to copy src/.env.example to src/.env and add you Mysql configuration such as username and password also in main .env.example in the main root to .env and change also the params. anyway i made default values you can use it. 
 ________________________________________________________________
 
 # How can we hit the api endpoint to make new order?
@@ -67,7 +69,7 @@ ___________________________________________________________________________
 
 # Testing:
 
-- The test cases is on src/tests and is cover 100% of the cases in order-package
+- The test cases is on src/tests and is cover 100% of the cases in order-package, and contain both unit and feature tests.
 
 - Go to container  by "docker exec -it php-app  /bin/bash"
 
@@ -88,7 +90,8 @@ ________________________________________________________________________________
 
 - Also, the project used here the transaction to make sure all database operations are done together or fail together, so I can assure data consistency.
 
-- Also, the project is using event-listener (observer pattern) so if the ingredient stock is below 50% it will fire event so listener can send the email and mark notification_send in database to 1 to not send again email regarding this ingredient and this is done with calling "src/order-package/Application/Service/Ingredient/IngredientService.php".
+- Also, the project is using event-listener (observer pattern) so if the ingredient stock is below 50% it will fire event so listener can send the email and mark notification_send in database to 1 to not send again email regarding this ingredient and this is done with calling "src/order-package/Application/Service/Ingredient/IngredientService.php". from 
+"src/app/Listeners/NotificationForIngredientBelowHalfInSockListener.php"
 __________________________________________________________________________________________
 
 # Things to do in the future
