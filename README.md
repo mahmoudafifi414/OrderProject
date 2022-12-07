@@ -1,5 +1,5 @@
 # OrderProject
-This project is built on laravel
+This project is built on laravel 9
 ______________________________________________________________
 # How It Works?
 
@@ -7,11 +7,19 @@ ______________________________________________________________
 
 2- checkout the master branch
 
-3- run "docker-compose up -d --build" and this will init the project
+3- go to **_src_** folder and run "composer install" => we can make it from Dockerfile, but it will take more time every build and need separate volume so it can be todo.
 
-4- The entrypoint.sh is having some command mandatory to run the code ,and also it is pointed as entrypoint from Dockerfile.
+4- in the root folder run "docker-compose up -d --build" and this will init the project and build the containers.
 
-5 The most important step is to copy src/.env.example to src/.env and add you Mysql configuration such as username and password also in main .env.example in the main root to .env and change also the params. anyway i made default values you can use it. 
+5- go to container bash by command "docker exec -it php-app  /bin/bash" and execute inside the container these commands:
+
+chmod -R 777 storage/
+php artisan cache:clear
+php artisan migrate:fresh
+php artisan db:seed
+
+
+6 The most important step is to copy src/.env.example to src/.env and add you Mysql configuration such as username and password also in main .env.example in the main root to .env and change also the params. anyway i made default values you can use it.
 ________________________________________________________________
 
 # How can we hit the api endpoint to make new order?
@@ -66,6 +74,28 @@ src/order-package has three main folders
 - We also have some bindings inside src/app/Providers/RepositoryServiceProvider.php.
 
 ___________________________________________________________________________
+# Database:
+1- products table => this table for products data
+      id
+      name
+
+2- order_product table => it is pivot table for orders and products many-to many relation
+    order_id     
+    product_id
+    product_quantity
+
+3- ingredients table => to store ingredients data
+    id
+    name
+    current_quantity
+    in_stock_quantity
+    notification_sent
+
+3- product_ingredient table => it is pivot table for products and ingredients many-to many relation
+    product_id
+    ingredient_id
+    ingredient_quantity
+_____________________________________________________________________________
 
 # Testing:
 
@@ -73,9 +103,9 @@ ___________________________________________________________________________
 
 - Go to container  by "docker exec -it php-app  /bin/bash"
 
-- Run "./vendor/bin/phpunit --coverage-text" so you can run the tests and with the coverage.
+- Run "./vendor/bin/phpunit --coverage-html order-package" so you can run the tests and with the coverage html.
 
-- After run test command you can see also see the coverage in report in "src/reports/coverage/index.html" ,so if you run this file in browser you can see the coverage. and it is 100%
+- After run last test command "coverage-html" you can see also see the coverage in report in "src/reports/coverage/index.html" ,so if you run this file in browser you can see the coverage. and it is 100%
 
 ![img.png](img.png)
 
@@ -103,3 +133,5 @@ ________________________________________________________________________________
 3- We need to consider cs-fix, so we can assure good standards in code.
 
 4- We need to use data provider in our test cases, so we shouldn't make a lot of code in the test with each test case data.
+
+5- We can send the emails via job queue run every 1 hour but we should scan the full ingredients table every 1 hour and may be valid because it is run after one hour.

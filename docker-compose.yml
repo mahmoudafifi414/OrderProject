@@ -28,6 +28,8 @@ services:
       - ./entrypoint.sh:/entrypoint.sh
     ports:
       - "9000:9000"
+    depends_on:
+      - mysql
     networks:
       - order-project
 

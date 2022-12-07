@@ -87,6 +87,8 @@ class OrderCreationService
                 throw new NotEnoughInStockIngredientsException("Sorry we couldn't proceed with your order because some order products can't be done right now");
             }
 
+            //We can send the emails via job queue run every 1 hour, but we should scan the full ingredients table every 1 hour and may be valid because it is run after one hour.
+            //also here I checked only the ingredients in the order not the full scan and may be good in performance.
             $ingredientsBelowHalfQuantity = $this->ingredientService->getIngredientsBelowHalfQuantity($productsIngredients);
             if (!empty($ingredientsBelowHalfQuantity)){
                 event(new IngredientBelowHalfOfStockQuantityEvent($ingredientsBelowHalfQuantity));
