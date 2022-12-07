@@ -1,0 +1,64 @@
+version: '3'
+
+networks:
+  order-project:
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-server
+    volumes:
+      - ./src:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8060:80"
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - order-project
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-app
+    volumes:
+      - ./src:/var/www
+      - ./entrypoint.sh:/entrypoint.sh
+    ports:
+      - "9000:9000"
+    networks:
+      - order-project
+
+  mysql:
+    image: library/mysql:5.7.22
+    container_name: mysql-db
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      SERVIVE_TAG: mysql
+      SERVICE_NAME: mysql
+
+    networks:
+      - order-project
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      - mysql
+    ports:
+      - "8088:80"
+    networks:
+      - order-project
