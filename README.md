@@ -7,7 +7,7 @@ ______________________________________________________________
 
 2- checkout the master branch
 
-3- go to **_src_** folder and run "composer install" => we can make it from Dockerfile, but it will take more time every build and need separate volume so it can be todo.
+3- go to **_src_** folder and run "composer install"
 
 4- in the root folder run "docker-compose up -d --build" and this will init the project and build the containers.
 
