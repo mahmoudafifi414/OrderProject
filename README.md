@@ -95,6 +95,8 @@ ___________________________________________________________________________
     product_id
     ingredient_id
     ingredient_quantity
+
+* Very important note: the factory in this project is seeding specific data not faker because faker will not enable me to change in the data when inserting in pivot.
 _____________________________________________________________________________
 
 # Testing:
@@ -135,3 +137,9 @@ ________________________________________________________________________________
 4- We need to use data provider in our test cases, so we shouldn't make a lot of code in the test with each test case data.
 
 5- We can send the emails via job queue run every 1 hour but we should scan the full ingredients table every 1 hour and may be valid because it is run after one hour.
+
+6- We can use faker in factory the models to DB.
+___________________________________________________________________________________________________
+# Notes:
+
+1- Ingredient quantities may be in kg or grams while product-ingredient quantities is always grams
